@@ -21,41 +21,4 @@
 
  ******************************************************************************/
 
-number  [0-9]
-alpha   [a-zA-Z]
-hex     [a-fA-F0-9]
-octa    [0-7]
-bin     [0-1]
-
-%{
-
-%}
-
-%%
-
- /*treat string surronded by double quote*/
-(\")[^(\")\n]*(\") {
-    return STRING;
-}
-
- /*treat string surronded by single quote*/
-(\')[^(\')\n]*(\') {
-    return STRING;
-}
-
- /*ignore white spaces and tabs*/
-[ \t] ;
-
- /*treat hexadecimal constants*/
-0[xX]{hex}+ {
-    return CONSTANT;
-}
-
- /*treat binary constants*/
-0b{bin}+ {
-    return CONSTANT;
-}
-
-
-
-%%
+#include "ast.h"

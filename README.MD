@@ -1,16 +1,23 @@
 <p align="center">
-  <img src="assets/logo.png" height="70" alt="Ceres - The S3MC language">
+    <a href="#">
+        <img src="assets/logo.png" height="70" alt="Ceres - The S3MC language">
+    </a>
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/repo-size/gustavoale/ceres-lang?style=for-the-badge" style="max-width:100%;" alt="Repo size">
-    <a href="/LICENCE">
+    <a href="#">
+    <img src="https://img.shields.io/github/repo-size/gustavoale/ceres-lang?style=for-the-badge" 
+    style="max-width:100%;" alt="Repo size">
+    </a>
+    <a href="/LICENSE">
         <img src="https://img.shields.io/github/license/gustavoale/ceres-lang?style=for-the-badge" style="max-width:100%;" alt="Repo size">
     </a>
+    <a href="#">
     <img src="https://img.shields.io/github/last-commit/gustavoale/ceres-lang?style=for-the-badge" style="max-width:100%;" alt="Repo size">
+    </a>
 </p>
----
 
+---
 
 ## Brief
 Ceres is a semi-oop simple programming language targeting the S3MC RISC 
