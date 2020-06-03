@@ -52,7 +52,7 @@ typedef enum
     /** Logical */
     LAND_OP, LOR_OP, LNOT_OP,
     /** Statements */
-    IF_STAT, FOR_STAT, WHILE_STAT, RETURN_STAT
+    IF_STAT, FOR_STAT, WHILE_STAT, RETURN_STAT,
     /** Other operators*/
     ASSIGN_OP, CALL_OP, LIST_OP,
     /** Arithmetic assign operators*/
@@ -103,10 +103,10 @@ struct node_t
     __node_type type;
     union
     {
-        const_node_t    *constant;
-        id_node_t       *identifier;
-        op_node_t       *operator;
-    }
+        const_node_t    constant;
+        id_node_t       identifier;
+        op_node_t       operator;
+    };
 };
 
 /** Allocate a node and return it's pointer
@@ -135,6 +135,8 @@ node_t *new_constant_node(int _value);
 
 /** Create a identifier node
  *  @param[_name] identifier name
+ *
+ *  Note: As a convention the _name pointer must be a copy of the original value
  *  @return Pointer to the created identifier node
  */
 node_t *new_identifier_node(char *_name);
