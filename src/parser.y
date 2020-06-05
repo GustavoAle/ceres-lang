@@ -1,6 +1,6 @@
  /******************************************************************************
 
-    Ceres Language - A language for RISC based processor  
+    Ceres Language - A language for RISC based processor
     Copyright (C) 2020  Gustavo Ale
 
     This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 
 %{
 
-
 %}
 
 
@@ -31,5 +30,5 @@
 
 program:
    ;
-   
+
 %%
