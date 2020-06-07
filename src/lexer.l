@@ -28,18 +28,20 @@ octa    [0-7]
 bin     [0-1]
 
 %{
-
+#include <string.h>
 %}
 
 %%
 
  /*treat string surronded by double quote*/
 (\")[^(\")\n]*(\") {
+    yyval.string_value = strdup(yytext);
     return STRING;
 }
 
  /*treat string surronded by single quote*/
 (\')[^(\')\n]*(\') {
+    yyval.string_value = strdup(yytext);
     return STRING;
 }
 

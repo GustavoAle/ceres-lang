@@ -6,7 +6,7 @@
 
 <p align="center">
     <a href="#">
-    <img src="https://img.shields.io/github/repo-size/gustavoale/ceres-lang?style=for-the-badge" 
+    <img src="https://img.shields.io/github/repo-size/gustavoale/ceres-lang?style=for-the-badge"
     style="max-width:100%;" alt="Repo size">
     </a>
     <a href="/LICENSE">
@@ -29,8 +29,8 @@ and other compiler toolchains are relatively hard to work with.
 
 
 ## Examples
-### Hello world 
-Since the S3MC processor currently run on a FPGA the basic input and output is 
+### Hello world
+Since the S3MC processor currently run on a FPGA the basic input and output is
 given by the serial port.
 ```
 #extern {
@@ -55,9 +55,9 @@ fun fib(n)
 {
     if(n == 1 or n == 2)
     {
-        return 1;
+        return 1
     }
-    return fib(n-1)+fib(n-2);
+    return fib(n-1)+fib(n-2)
 }
 
 ...
@@ -72,6 +72,6 @@ fun fib(n)
 
 ## Credits
 
-* Tom Niemann - [Lex & Yacc tutorial](https://www.epaperpress.com/lexandyacc/). 
-The first versions of the lexer and parser are strongly based on Niemann's 
+* Tom Niemann - [Lex & Yacc tutorial](https://www.epaperpress.com/lexandyacc/).
+The first versions of the lexer and parser are strongly based on Niemann's
 examples presented in the book.

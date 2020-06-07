@@ -22,8 +22,27 @@
  ******************************************************************************/
 
 %{
-
+#include "ast/ast.h"
 %}
+
+%union {
+    int const_value;
+    char *string_value;
+    char *symbol_name;
+    node_t *ast_node;
+}
+
+%token <const_value> CONSTANT_T
+%token <symbol_name> IDENTIFIER_T
+%token <string_value> STRING
+%type <ast_node> expr stat stat_list
+%token SUB
+%token FUN
+%token IF
+%token WHILE
+%token FOR 
+
+%token RETURN
 
 
 %%

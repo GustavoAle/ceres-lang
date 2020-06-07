@@ -31,6 +31,7 @@
 node_t *allocate_node()
 {
     node_t *new;
+
     new = (node_t*)malloc(sizeof(node_t));
 
     if(new == NULL)
@@ -58,6 +59,8 @@ void free_node(node_t *_ptr)
             the identifier name thus when assigning a value to name make
             a copy o the string instead of pointing to it with strdup*/
             free(_ptr->identifier.name);
+            break;
+        default:
             break;
     }
     free(_ptr);
