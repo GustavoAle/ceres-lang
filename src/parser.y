@@ -37,24 +37,28 @@
 %token <string_value> STRING
 %type <ast_node> expr stat stat_list
 
-%token IF
+%token ASM
+%token AUTO
+%token BOOL
+%token BREAK
+%token BYTE
+%token CONST
 %token ELSE
 %token FOR
-%token WHILE
-%token LOOP
-%token BREAK
-%token REGISTER
-%token SUB
-%token RETURN
-%token AUTO
+%token FUNCTION
+%token IF
 %token INT
-%token BYTE
-%token BOOL
+%token LOOP
 %token POINTER
+%token PUBLIC
+%token REGISTER
+%token RETURN
+%token SCOPE
 %token SHARED
+%token SIZEOF
+%token SUB
 %token TUPLE
-
-
+%token WHILE
 
 %%
 

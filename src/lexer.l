@@ -33,23 +33,32 @@ bin     [0-1]
 
 %%
 
-"if"        { return IF; }
+"__asm"     { return ASM; }
+"auto"      { return AUTO; }
+"bool"      { return BOOL; }
+"break"     { return BREAK; }
+"byte"      { return BYTE; }
+"const"     { return CONST; }
 "else"      { return ELSE; }
 "for"       { return FOR; }
-"while"     { return WHILE; }
-"loop"      { return LOOP; }
-"break"     { return BREAK; }
-"reg"       { return REGISTER; }
-"sub"       { return SUB; }
-"return"    { return RETURN; }
-"auto"      { return AUTO; }
+"fun"       { return FUNCTION; }
+"function"  { return FUNCTION; }
+"if"        { return IF; }
 "int"       { return INT; }
-"byte"      { return BYTE; }
-"bool"      { return BOOL; }
+"loop"      { return LOOP; }
 "mem"       { return POINTER; }
 "pointer"   { return POINTER; }
+"public"    { return PUBLIC; }
+"reg"       { return REGISTER; }
+"register"  { return REGISTER; }
+"return"    { return RETURN; }
+"scope"     { return SCOPE; }
 "shared"    { return SHARED; }
-"tuple"     { return STRUCT; }
+"sizeof"    { return SIZEOF; }
+"sub"       { return SUB; }
+"tuple"     { return TUPLE; }
+"var"       { return AUTO; }
+"while"     { return WHILE; }
 
  /*treat string surronded by double quote*/
 (\")[^(\")\n]*(\") {
