@@ -33,6 +33,24 @@ bin     [0-1]
 
 %%
 
+"if"        { return IF; }
+"else"      { return ELSE; }
+"for"       { return FOR; }
+"while"     { return WHILE; }
+"loop"      { return LOOP; }
+"break"     { return BREAK; }
+"reg"       { return REGISTER; }
+"sub"       { return SUB; }
+"return"    { return RETURN; }
+"auto"      { return AUTO; }
+"int"       { return INT; }
+"byte"      { return BYTE; }
+"bool"      { return BOOL; }
+"mem"       { return POINTER; }
+"pointer"   { return POINTER; }
+"shared"    { return SHARED; }
+"tuple"     { return STRUCT; }
+
  /*treat string surronded by double quote*/
 (\")[^(\")\n]*(\") {
     yyval.string_value = strdup(yytext);
@@ -49,12 +67,20 @@ bin     [0-1]
 [ \t] ;
 
  /*treat hexadecimal constants*/
-0[xX]{hex}+ {
+[0'][xX]{hex}+ {
+    yyval.const_value = (int)strtol(yytext,NULL,16);
     return CONSTANT;
 }
 
  /*treat binary constants*/
-0b{bin}+ {
+[0']b{bin}+ {
+    yyval.const_value = (int)strtol(yytext+2,NULL,2);
+    return CONSTANT;
+}
+
+ /*treat octal constants*/
+[0']{octa}+ {
+    yyval.const_value = (int)strtol(yytext,NULL,8);
     return CONSTANT;
 }
 

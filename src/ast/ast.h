@@ -52,8 +52,9 @@ typedef enum
     /** Logical */
     LAND_OP, LOR_OP, LNOT_OP,
     /** Statements */
-    IF_STAT, FOR_STAT, WHILE_STAT, RETURN_STAT,
+    IF_STAT, ELSE_STAT, FOR_STAT, WHILE_STAT, RETURN_STAT,
     /** Other operators*/
+    LOOP_OP, BREAK_OP,
     ASSIGN_OP, CALL_OP, LIST_OP,
     /** Arithmetic assign operators*/
     AADD_OP, ASUB_OP, AMUL_OP, ADIV_OP,

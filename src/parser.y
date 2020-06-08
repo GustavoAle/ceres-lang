@@ -36,13 +36,24 @@
 %token <symbol_name> IDENTIFIER_T
 %token <string_value> STRING
 %type <ast_node> expr stat stat_list
-%token SUB
-%token FUN
-%token IF
-%token WHILE
-%token FOR 
 
+%token IF
+%token ELSE
+%token FOR
+%token WHILE
+%token LOOP
+%token BREAK
+%token REGISTER
+%token SUB
 %token RETURN
+%token AUTO
+%token INT
+%token BYTE
+%token BOOL
+%token POINTER
+%token SHARED
+%token TUPLE
+
 
 
 %%

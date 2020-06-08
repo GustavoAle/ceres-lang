@@ -31,7 +31,7 @@
 node_t *allocate_node()
 {
     node_t *new;
-
+    
     new = (node_t*)malloc(sizeof(node_t));
 
     if(new == NULL)
