@@ -21,7 +21,7 @@
 
  ******************************************************************************/
 
-#include "ast.h"
+#include <ast/ast.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -33,7 +33,7 @@ node_t *allocate_node()
     node_t *new;
     
     new = (node_t*)malloc(sizeof(node_t));
-
+    
     if(new == NULL)
     {
         fprintf(STDERR_FILE,"Allocation error, this is not supposed to happen\n");
@@ -50,11 +50,11 @@ void free_node(node_t *_ptr)
 
     switch(_ptr->type)
     {
-        case OPERATOR:
+        case OPERATOR_TYPE:
             free_node(_ptr->operator.left);
             free_node(_ptr->operator.right);
             break;
-        case IDENTIFIER:
+        case IDENTIFIER_TYPE:
             /** Note that this line frees the memory allocated to hold
             the identifier name thus when assigning a value to name make
             a copy o the string instead of pointing to it with strdup*/
@@ -71,7 +71,7 @@ node_t *new_operator_node(__ceres_opcode _opcode, node_t *_left, node_t *_right)
 {
     node_t *new = allocate_node();
 
-    new->type = OPERATOR;
+    new->type = OPERATOR_TYPE;
 
     /** Initialize the node with the passed arguments*/
     new->operator.left = _left;
@@ -85,7 +85,7 @@ node_t *new_constant_node(int _value)
 {
     node_t *new = allocate_node();
 
-    new->type = CONSTANT;
+    new->type = CONSTANT_TYPE;
 
     /** Initialize the node with passed arguments*/
     new->constant.value = _value;
@@ -97,7 +97,7 @@ node_t *new_identifier_node(char *_name)
 {
     node_t *new = allocate_node();
 
-    new->type = IDENTIFIER;
+    new->type = IDENTIFIER_TYPE;
 
     /** Initialize the node with passed argument*/
     new->identifier.name = _name;

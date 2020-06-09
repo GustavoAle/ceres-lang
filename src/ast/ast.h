@@ -33,9 +33,9 @@
  */
 typedef enum
 {
-    CONSTANT,
-    IDENTIFIER,
-    OPERATOR
+    CONSTANT_TYPE,
+    IDENTIFIER_TYPE,
+    OPERATOR_TYPE
 } __node_type;
 
 /** Define available opcodes

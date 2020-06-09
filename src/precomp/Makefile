@@ -4,7 +4,7 @@ LEX = flex
 YACC = bison -d
 OBJS = parser.tab.o
 
-OUTPUT = ceres
+OUTPUT = cerespre
 
 .SUFFIXES: .c .o
 

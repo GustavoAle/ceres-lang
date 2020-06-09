@@ -29,6 +29,8 @@ bin     [0-1]
 
 %{
 #include <string.h>
+#include <ast/ast.h>
+#include <parser.tab.h>
 %}
 
 %%
@@ -62,13 +64,13 @@ bin     [0-1]
 
  /*treat string surronded by double quote*/
 (\")[^(\")\n]*(\") {
-    yyval.string_value = strdup(yytext);
+    yylval.string_value = strdup(yytext);
     return STRING;
 }
 
  /*treat string surronded by single quote*/
 (\')[^(\')\n]*(\') {
-    yyval.string_value = strdup(yytext);
+    yylval.string_value = strdup(yytext);
     return STRING;
 }
 
@@ -77,22 +79,24 @@ bin     [0-1]
 
  /*treat hexadecimal constants*/
 [0'][xX]{hex}+ {
-    yyval.const_value = (int)strtol(yytext,NULL,16);
+    yylval.const_value = (int)strtol(yytext+2,NULL,16);
     return CONSTANT;
 }
 
  /*treat binary constants*/
 [0']b{bin}+ {
-    yyval.const_value = (int)strtol(yytext+2,NULL,2);
+    yylval.const_value = (int)strtol(yytext+2,NULL,2);
     return CONSTANT;
 }
 
  /*treat octal constants*/
 [0']{octa}+ {
-    yyval.const_value = (int)strtol(yytext,NULL,8);
+    yylval.const_value = (int)strtol(yytext+1,NULL,8);
     return CONSTANT;
 }
 
-
+{alpha}({number}|{alpha})* {
+    return IDENTIFIER;
+}
 
 %%
