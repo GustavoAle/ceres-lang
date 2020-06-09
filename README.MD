@@ -27,6 +27,10 @@ development and testing of the S3MC processors. This goal will be gradually
 extended to provide a high-level language for newborn RISC processors since LLVM
 and other compiler toolchains are relatively hard to work with.
 
+## Documentation
+Please refer to [Ceres Documentation](https://gustavoale.github.io/ceres-lang-doc/site/)
+for documentation, examples and further information.
+
 ---
 ## Author
 
