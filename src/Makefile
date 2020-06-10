@@ -15,10 +15,10 @@ $(OUTPUT): $(OBJS)
 	$(CC) $(CFLAGS) -c $^
 
 lex.yy.c:
-	$(LEX) lexer.l
+	$(LEX) compiler/compiler.l
 
 parser.tab.c:
-	$(YACC) parser.y
+	$(YACC) compiler/compiler.y
 
 parser.tab.o: parser.tab.c lex.yy.c
 

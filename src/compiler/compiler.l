@@ -96,6 +96,7 @@ bin     [0-1]
 }
 
 {alpha}({number}|{alpha})* {
+    yylval.symbol_name = strdup(yytext);
     return IDENTIFIER;
 }
 
