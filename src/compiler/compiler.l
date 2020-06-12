@@ -59,6 +59,7 @@ bin     [0-1]
 "sizeof"    { return SIZEOF; }
 "sub"       { return SUB; }
 "tuple"     { return TUPLE; }
+"type"      { return TYPE; }
 "var"       { return AUTO; }
 "while"     { return WHILE; }
 

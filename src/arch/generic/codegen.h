@@ -21,7 +21,7 @@
 
 ******************************************************************************/
 
-#ifndef __CERES_CODEGEN_H
-#define __CERES_CODEGEN_H
+#ifndef __CERES_GENERIC_CODEGEN_H
+#define __CERES_GENERIC_CODEGEN_H
 
 #endif

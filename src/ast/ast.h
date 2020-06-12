@@ -116,7 +116,7 @@ struct node_t
 node_t *allocate_node();
 
 /** Recursively free a node
- *  @param[_ptr] Pointer do node to be freed
+ *  @param[_ptr] Pointer to node to be freed
  */
 void free_node(node_t *_ptr);
 

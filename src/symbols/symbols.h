@@ -24,5 +24,33 @@
 #ifndef __CERES_SYMBOLS_H
 #define __CERES_SYMBOLS_H
 
+#include <symbols/hash.h>
+
+typedef struct symbol_t symbol_t;
+
+struct symbol_t 
+{
+    symbol_t *next;
+    symbol_t *childs;
+    nfa256hash hash;
+    void *ptr;
+};
+
+/** Allocate a symbol and return it's pointer
+ *  @return Pointer to the allocated node
+ */
+symbol_t *allocate_symbol();
+
+/** Recussively free a symbol and it's childs
+ *  @param[_ptr] Pointer to symbol to be freed
+ */
+void free_symbol(symbol_t *_ptr);
+
+/** Find symbol based on it's hash
+ * @param[_hash] Symbol hash
+ * @return Pointer to symbol
+ */
+symbol_t *find_symbol(nfa256hash _hash);
+
 
 #endif

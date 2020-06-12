@@ -20,3 +20,10 @@
     Email: gustavo.engca@gmail.com
 
  ******************************************************************************/
+
+#ifndef __CERES_SYMBOLS_H
+#define __CERES_SYMBOLS_H
+
+
+
+#endif

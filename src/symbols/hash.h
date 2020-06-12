@@ -1,6 +1,6 @@
 /******************************************************************************
 
-   Ceres Language - A language for RISC based processor
+   NFA-256 Hash Function
    Copyright (C) 2020  Gustavo Ale
 
    This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,32 @@
    Email: gustavo.engca@gmail.com
 
 ******************************************************************************/
+#ifndef __NFA256_HASH
+#define __NFA256_HASH
 
-#ifndef __CERES_RISCV_CODEGEN_H
-#define __CERES_RISCV_CODEGEN_H
+#include <stdint.h>
+
+typedef union nfa256hash_u nfa256hash;
+
+union nfa256hash_u {
+    struct {
+        uint32_t block_a;
+        uint32_t block_b;
+        uint32_t block_c;
+        uint32_t block_d;
+        uint32_t block_e;
+        uint32_t block_f;
+        uint32_t block_g; 
+        uint32_t block_h; 
+    };
+    char hash[32];
+};
+
+/** Create a nfa-256 hash based on _string and return it's value
+ * @param[_string] String to generate the hash
+ * @return NFA-256 hash
+ * */ 
+nfa256hash new_nfa256_hash(char *_string);
+int compare_nfa256_hash(nfa256hash _hasha, nfa256hash _hashb);
 
 #endif

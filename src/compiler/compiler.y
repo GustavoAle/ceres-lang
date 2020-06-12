@@ -58,6 +58,7 @@
 %token SIZEOF
 %token SUB
 %token TUPLE
+%token TYPE
 %token WHILE
 
 %%
