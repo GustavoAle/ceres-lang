@@ -36,7 +36,7 @@ typedef enum
     CONSTANT_TYPE,
     IDENTIFIER_TYPE,
     OPERATOR_TYPE
-} __node_type;
+} __astnode_type;
 
 /** Define available opcodes
  *  binary operators, assign operator, structure and statements
@@ -65,60 +65,60 @@ typedef enum
 /** Basic AST node structure
  *  Pre-definition for cross reference
  */
-typedef struct node_t node_t;
+typedef struct astnode_t astnode_t;
 
 /** Constant node structure
  *  Pre-definition for cross reference
  */
-typedef struct const_node_t const_node_t;
+typedef struct const_astnode_t const_astnode_t;
 
 /** Identifier node structure
  *  Pre-definition for cross reference
  */
-typedef struct id_node_t id_node_t;
+typedef struct id_astnode_t id_astnode_t;
 
 /** Operator node structure
  *  Pre-definition for cross reference
  */
-typedef struct op_node_t op_node_t;
+typedef struct op_astnode_t op_astnode_t;
 
-struct const_node_t
+struct const_astnode_t
 {
     int value;
 };
 
-struct id_node_t
+struct id_astnode_t
 {
     char *name;
 };
 
-struct op_node_t
+struct op_astnode_t
 {
     __ceres_opcode opcode;
-    node_t *right;
-    node_t *left;
+    astnode_t *right;
+    astnode_t *left;
 };
 
-struct node_t
+struct astnode_t
 {
-    __node_type type;
+    __astnode_type type;
     union
     {
-        const_node_t    constant;
-        id_node_t       identifier;
-        op_node_t       operator;
+        const_astnode_t    constant;
+        id_astnode_t       identifier;
+        op_astnode_t       operator;
     };
 };
 
 /** Allocate a node and return it's pointer
  *  @return Pointer to the allocated node
  */
-node_t *allocate_node();
+astnode_t *allocate_node();
 
 /** Recursively free a node
  *  @param[_ptr] Pointer to node to be freed
  */
-void free_node(node_t *_ptr);
+void free_node(astnode_t *_ptr);
 
 /** Create a operator node
  *  @param[_opcode] operator opcode
@@ -126,13 +126,13 @@ void free_node(node_t *_ptr);
  *  @param[_right] right lead
  *  @return Pointer to the created operator node
  */
-node_t *new_operator_node(__ceres_opcode _opcode, node_t *_left, node_t *_right);
+astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t *_right);
 
 /** Create a constant node
  *  @param[_value] Constant's value
  *  @return Pointer to the created constant node
  */
-node_t *new_constant_node(int _value);
+astnode_t *new_constant_node(int _value);
 
 /** Create a identifier node
  *  @param[_name] identifier name
@@ -140,6 +140,6 @@ node_t *new_constant_node(int _value);
  *  Note: As a convention the _name pointer must be a copy of the original value
  *  @return Pointer to the created identifier node
  */
-node_t *new_identifier_node(char *_name);
+astnode_t *new_identifier_node(char *_name);
 
 #endif

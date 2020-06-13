@@ -28,11 +28,11 @@
 /** Temporary*/
 #define STDERR_FILE stdout
 
-node_t *allocate_node()
+astnode_t *allocate_node()
 {
-    node_t *new;
+    astnode_t *new;
     
-    new = (node_t*)malloc(sizeof(node_t));
+    new = (astnode_t*)malloc(sizeof(astnode_t));
     
     if(new == NULL)
     {
@@ -44,7 +44,7 @@ node_t *allocate_node()
     return new;
 }
 
-void free_node(node_t *_ptr)
+void free_node(astnode_t *_ptr)
 {
     if(_ptr == NULL){ return; }
 
@@ -67,9 +67,9 @@ void free_node(node_t *_ptr)
 
 }
 
-node_t *new_operator_node(__ceres_opcode _opcode, node_t *_left, node_t *_right)
+astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t *_right)
 {
-    node_t *new = allocate_node();
+    astnode_t *new = allocate_node();
 
     new->type = OPERATOR_TYPE;
 
@@ -81,9 +81,9 @@ node_t *new_operator_node(__ceres_opcode _opcode, node_t *_left, node_t *_right)
     return new;
 }
 
-node_t *new_constant_node(int _value)
+astnode_t *new_constant_node(int _value)
 {
-    node_t *new = allocate_node();
+    astnode_t *new = allocate_node();
 
     new->type = CONSTANT_TYPE;
 
@@ -93,9 +93,9 @@ node_t *new_constant_node(int _value)
     return new;
 }
 
-node_t *new_identifier_node(char *_name)
+astnode_t *new_identifier_node(char *_name)
 {
-    node_t *new = allocate_node();
+    astnode_t *new = allocate_node();
 
     new->type = IDENTIFIER_TYPE;
 

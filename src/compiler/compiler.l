@@ -41,12 +41,15 @@ bin     [0-1]
 "break"     { return BREAK; }
 "byte"      { return BYTE; }
 "const"     { return CONST; }
+"double"    { return DOUBLE; }
 "else"      { return ELSE; }
+"float"     { return FLOAT;}
 "for"       { return FOR; }
 "fun"       { return FUNCTION; }
 "function"  { return FUNCTION; }
 "if"        { return IF; }
 "int"       { return INT; }
+"long"      { return LONG; }
 "loop"      { return LOOP; }
 "mem"       { return POINTER; }
 "pointer"   { return POINTER; }
@@ -56,10 +59,13 @@ bin     [0-1]
 "return"    { return RETURN; }
 "scope"     { return SCOPE; }
 "shared"    { return SHARED; }
+"signed"    { return SIGNED; }
 "sizeof"    { return SIZEOF; }
+"static"    { return STATIC; }
 "sub"       { return SUB; }
 "tuple"     { return TUPLE; }
 "type"      { return TYPE; }
+"unsigned"  { return UNSIGNED; }
 "var"       { return AUTO; }
 "while"     { return WHILE; }
 

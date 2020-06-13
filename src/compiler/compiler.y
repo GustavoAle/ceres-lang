@@ -43,11 +43,14 @@
 %token BREAK
 %token BYTE
 %token CONST
+%token DOUBLE
 %token ELSE
+%token FLOAT
 %token FOR
 %token FUNCTION
 %token IF
 %token INT
+%token LONG
 %token LOOP
 %token POINTER
 %token PUBLIC
@@ -55,10 +58,13 @@
 %token RETURN
 %token SCOPE
 %token SHARED
+%token SIGNED
 %token SIZEOF
+%token STATIC
 %token SUB
 %token TUPLE
 %token TYPE
+%token UNSIGNED
 %token WHILE
 
 %%

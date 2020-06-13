@@ -21,65 +21,27 @@
 
 ******************************************************************************/
 
-#ifndef __CERES_SYMBOLS_H
-#define __CERES_SYMBOLS_H
+#ifndef __CERES_BST_H
+#define __CERES_BST_H
 
-#include <symbols/hash.h>
+#include <symbols/symbols.h>
 
-typedef enum
+/** Binary search tree generic node
+ *  It can store any data pointer  
+ * */
+typedef struct bstnode_t bstnode_t;
+
+struct bstnode_t
 {
-    AUTO,
-    BOOL,
-    BYTE,
-    CHAR,
-    CLASS,
-    DOUBLE,
-    FLOAT,
-    INT,
-    LONG,
-    SHARED,
-    TUPLE,
-    VOID
-} __symbol_type;
-
-typedef enum 
-{
-    CONST,
-    FUNCTION,
-    POINTER,
-    REGISTER,
-    SIGNED,
-    STATIC,
-    SUB,
-    UNSIGNED
-} __atrr_type;
-
-/** Struct that hold a symbol entry*/
-typedef struct symbol_t symbol_t;
-
-struct symbol_t 
-{
-    nfa256hash hash;
-    __symbol_type type;
-    __atrr_type attr;
-    int offset;
+    bstnode_t *left;
+    bstnode_t *right;
+    bstnode_t *inner;
+    union 
+    {
+        symbol_t *symbol;
+        void *data;
+    };
 };
-
-/** Allocate a symbol and return it's pointer
- *  @return Pointer to the allocated node
- */
-symbol_t *allocate_symbol();
-
-/** Recussively free a symbol and it's childs
- *  @param[_ptr] Pointer to symbol to be freed
- */
-void free_symbol(symbol_t *_ptr);
-
-/** Find symbol based on it's hash
- * @param[_hash] Symbol hash
- * @return Pointer to symbol
- */
-symbol_t *find_symbol(nfa256hash _hash);
 
 
 #endif

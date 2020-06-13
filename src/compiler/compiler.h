@@ -21,8 +21,8 @@
 
  ******************************************************************************/
 
-#ifndef __CERES_SYMBOLS_H
-#define __CERES_SYMBOLS_H
+#ifndef __CERES_COMPILER_H
+#define __CERES_COMPILER_H
 
 
 
