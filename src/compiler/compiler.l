@@ -30,7 +30,8 @@ bin     [0-1]
 %{
 #include <string.h>
 #include <ast/ast.h>
-#include <parser.tab.h>
+#include <symbols/symbols.h>
+#include <compiler.tab.h>
 %}
 
 %%

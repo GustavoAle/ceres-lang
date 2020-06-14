@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -ly -I.
 LEX = flex
 YACC = bison -d
-OBJS = parser.tab.o
+OBJS = compiler.tab.o
 
 OUTPUT = ceres
 
@@ -17,10 +17,10 @@ $(OUTPUT): $(OBJS)
 lex.yy.c:
 	$(LEX) compiler/compiler.l
 
-parser.tab.c:
+compiler.tab.c:
 	$(YACC) compiler/compiler.y
 
-parser.tab.o: parser.tab.c lex.yy.c
+compiler.tab.o: compiler.tab.c lex.yy.c
 
 clean:
-	$(RM) $(PROGRAM) $(OBJS) lex.yy.c parser.tab.[ch] *.o
+	$(RM) $(PROGRAM) $(OBJS) lex.yy.c compiler.tab.[ch] *.o

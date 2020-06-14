@@ -21,57 +21,8 @@
 
  ******************************************************************************/
 
-%{
-#include <ast/ast.h>
-%}
+#ifndef __CERES_TOKENS_H
+#define __CERES_TOKENS_H
 
-%union {
-    int const_value;
-    char *string_value;
-    char *symbol_name;
-    astnode_t *ast_node;
-}
 
-%token <const_value> CONSTANT
-%token <symbol_name> IDENTIFIER
-%token <string_value> STRING
-%type <ast_node> expr stat stat_list
-
- /*
-%token ASM
-%token AUTO
-%token BOOL
-%token BREAK
-%token BYTE
-%token CONST
-%token DOUBLE
-%token ELSE
-%token FLOAT
-%token FOR
-%token FUNCTION
-%token IF
-%token INT
-%token LONG
-%token LOOP
-%token POINTER
-%token PUBLIC
-%token REGISTER
-%token RETURN
-%token SCOPE
-%token SHARED
-%token SIGNED
-%token SIZEOF
-%token STATIC
-%token SUB
-%token TUPLE
-%token TYPE
-%token UNSIGNED
-%token WHILE
- */
-
-%%
-
-program:
-   ;
-
-%%
+#endif
