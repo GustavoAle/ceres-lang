@@ -21,7 +21,7 @@
 
 ******************************************************************************/
 
-#include "hash.h"
+#include <include/hash.h>
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>

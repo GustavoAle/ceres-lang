@@ -29,8 +29,8 @@ bin     [0-1]
 
 %{
 #include <string.h>
-#include <ast/ast.h>
-#include <symbols/symbols.h>
+#include <include/ast.h>
+#include <include/symbols.h>
 #include <compiler.tab.h>
 %}
 

@@ -21,6 +21,6 @@
 
 ******************************************************************************/
 
-#include <ast/ast.h>
-#include <symbols/symbols.h>
+#include <include/ast.h>
+#include <include/symbols.h>
 #include <arch/generic/codegen.h>

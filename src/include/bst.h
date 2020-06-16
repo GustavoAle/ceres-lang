@@ -24,7 +24,7 @@
 #ifndef __CERES_BST_H
 #define __CERES_BST_H
 
-#include <symbols/symbols.h>
+#include <include/symbols.h>
 
 /** Binary search tree generic node
  *  It can store any data pointer  
