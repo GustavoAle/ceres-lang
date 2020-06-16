@@ -44,6 +44,7 @@ bin     [0-1]
 "bool"      { return BOOL; }
 "break"     { return BREAK; }
 "byte"      { return BYTE; }
+"class"     { return CLASS; }
 "const"     { return CONST; }
 "double"    { return DOUBLE; }
 "else"      { return ELSE; }

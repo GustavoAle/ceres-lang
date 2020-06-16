@@ -46,7 +46,7 @@ typedef enum
 typedef enum
 {
     /** Arithmetic */
-    ADD_OP, SUB_OP, MUL_OP, DIV_OP,
+    ADD_OP, SUB_OP, MUL_OP, DIV_OP, MOD_OP,
     /** Bitwise */
     AND_OP, OR_OP, XOR_OP, NOT_OP, RSH_OP, LSH_OP,
     /** Logical */

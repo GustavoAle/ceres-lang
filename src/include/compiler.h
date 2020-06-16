@@ -24,6 +24,7 @@
 #ifndef __CERES_COMPILER_H
 #define __CERES_COMPILER_H
 
+<<<<<<< HEAD:src/include/compiler.h
 /** yylex function
  * @brief Get current char, count current line 
  * and column then return the current char 
@@ -35,5 +36,21 @@ int yylex();
  * @brief Print a error message when a parsing error occurs
  * */
 void yyerror();
+=======
+typedef enum 
+{
+    /* Types*/
+    BOOL, BYTE, CHAR, DOUBLE, FLOAT, 
+    INT, LONG, SHARED, TUPLE, 
+    /* Type modifiers */
+    AUTO, CONST, POINTER, PUBLIC, 
+    REGISTER, STATIC, SIGNED, UNSIGNED,
+    /* Statements */
+    ASM, BREAK, CLASS, ELSE, FOR, IF, FUNCTION, 
+    LOOP, RETURN, SCOPE, SUB, TYPE, WHILE,
+    /* Operators */ 
+    SIZEOF 
+} __ceres_token;
+>>>>>>> master:src/compiler/compiler.h
 
 #endif

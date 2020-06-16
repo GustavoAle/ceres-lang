@@ -24,9 +24,14 @@
 #ifndef __CERES_SYMBOLS_H
 #define __CERES_SYMBOLS_H
 
+<<<<<<< HEAD:src/include/symbols.h
 #include <include/hash.h>
 #include <include/tokens.h>
 
+=======
+#include <symbols/hash.h>
+#include <compiler/compiler.h>
+>>>>>>> master:src/symbols/symbols.h
 /*
 typedef enum
 {
