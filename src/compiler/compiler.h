@@ -24,6 +24,19 @@
 #ifndef __CERES_COMPILER_H
 #define __CERES_COMPILER_H
 
-
+typedef enum 
+{
+    /* Types*/
+    BOOL, BYTE, CHAR, DOUBLE, FLOAT, 
+    INT, LONG, SHARED, TUPLE, 
+    /* Type modifiers */
+    AUTO, CONST, POINTER, PUBLIC, 
+    REGISTER, STATIC, SIGNED, UNSIGNED,
+    /* Statements */
+    ASM, BREAK, CLASS, ELSE, FOR, IF, FUNCTION, 
+    LOOP, RETURN, SCOPE, SUB, TYPE, WHILE,
+    /* Operators */ 
+    SIZEOF 
+} __ceres_token;
 
 #endif
