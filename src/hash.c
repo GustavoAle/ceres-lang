@@ -26,7 +26,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-
+/** Initial hash values */
 #define BLOCK_A_INIT 0x442262bb
 #define BLOCK_B_INIT 0x8f9224c5
 #define BLOCK_C_INIT 0x88d36e0c
@@ -71,19 +71,34 @@ nfa256hash new_nfa256_hash(char *_string)
     return;
 }
 
-int compare_nfa256_hash(nfa256hash _hasha, nfa256hash _hashb)
+int compare_nfa256_hash(nfa256hash *_hasha, nfa256hash *_hashb)
 {
     int _bool = 1;
+    int aux;
 
-    _bool = _bool && (_hasha.block_a == _hashb.block_a);
-    _bool = _bool && (_hasha.block_b == _hashb.block_b);
-    _bool = _bool && (_hasha.block_c == _hashb.block_c);
-    _bool = _bool && (_hasha.block_d == _hashb.block_d);
-    _bool = _bool && (_hasha.block_e == _hashb.block_e);
-    _bool = _bool && (_hasha.block_f == _hashb.block_f);
-    _bool = _bool && (_hasha.block_g == _hashb.block_g);
-    _bool = _bool && (_hasha.block_h == _hashb.block_h);
+    for(aux = 0; aux < 32; aux++)
+    {
+        if(_hasha->hash[aux] > _hashb->hash[aux]){
+            return 1;
+        }else if(_hasha->hash[aux] < _hashb->hash[aux]){
+            return -1;    
+        }
+    }
+
+    /** Congratulations in 1 chance out of 2^256 your hashs are equal*/
+    return 0;
+
+/*  //Lemme comment my mistakes before taking the trash out
+    if(!(_bool = _bool && (_hasha.block_a == _hashb.block_a))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_b == _hashb.block_b))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_c == _hashb.block_c))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_d == _hashb.block_d))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_e == _hashb.block_e))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_f == _hashb.block_f))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_g == _hashb.block_g))){ return 0; };
+    if(!(_bool = _bool && (_hasha.block_h == _hashb.block_h))){ return 0; };
 
     return _bool;   
+*/
 }
 

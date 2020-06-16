@@ -34,8 +34,8 @@ typedef struct bstnode_t bstnode_t;
 struct bstnode_t
 {
     bstnode_t *left;
-    bstnode_t *right;
-    bstnode_t *inner;
+    bstnode_t *right; 
+    bstnode_t *inner; /** Inner scope */
     union 
     {
         symbol_t *symbol;
