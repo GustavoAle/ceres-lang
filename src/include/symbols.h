@@ -25,7 +25,9 @@
 #define __CERES_SYMBOLS_H
 
 #include <include/hash.h>
+#include <include/tokens.h>
 
+/*
 typedef enum
 {
     AUTO,
@@ -53,6 +55,7 @@ typedef enum
     SUB,
     UNSIGNED
 } __atrr_type;
+*/
 
 /** Struct that hold a symbol entry*/
 typedef struct symbol_t symbol_t;
@@ -60,8 +63,8 @@ typedef struct symbol_t symbol_t;
 struct symbol_t 
 {
     nfa256hash hash;
-    __symbol_type type;
-    __atrr_type attr;
+    __ceres_token type;
+    __ceres_token attr;
     int offset;
 };
 

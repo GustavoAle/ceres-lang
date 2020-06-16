@@ -23,6 +23,8 @@
 
 %{
 #include <include/ast.h>
+#include <include/tokens.h>
+#include <include/compiler.h>
 %}
 
 %union {
