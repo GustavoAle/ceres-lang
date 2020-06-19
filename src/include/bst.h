@@ -24,24 +24,76 @@
 #ifndef __CERES_BST_H
 #define __CERES_BST_H
 
+/******************************************************************************
+ * Add here the headers for user-defined data types, 
+ * then add the data def to anydata_t union
+******************************************************************************/
+
 #include <include/symbols.h>
+
+/*****************************************************************************/
 
 /** Binary search tree generic node
  *  It can store any data pointer  
  * */
 typedef struct bstnode_t bstnode_t;
 
+/** Generic data storage */
+typedef union anydata_t anydata_t;
+
+union anydata_t
+{
+    symbol_t *symbol;
+    void *any;
+};
+
 struct bstnode_t
 {
     bstnode_t *left;
     bstnode_t *right; 
-    bstnode_t *inner; /** Inner scope */
-    union 
-    {
-        symbol_t *symbol;
-        void *data;
-    };
+    bstnode_t *subtree; /** Inner scope */
+    anydata_t *data;
 };
+
+/** Inserts a BST node 
+ * @param[_root] BST root 
+ * @param[_data] Data pointer of the node to be inserted
+ * @param[_cmpcallback] Function pointer to compare two user-defined data types
+ * @return Pointer to the inserted node
+ * */
+bstnode_t *insert_bstnode(bstnode_t *_root, void *_data, int (*_cmpcallback)(void*,void*));
+
+/** Find a bst node by its data (the search is not perform on subtrees)
+ * @param[_root] BST root 
+ * @param[_data] Data pointer of the node to be find
+ * @param[_cmpcallback] Function pointer to compare two user-defined data types
+ * @return Pointer to the found node or NULL if not found
+ * */
+bstnode_t *find_bstnode(bstnode_t *_root, void *_data, int (*_cmpcallback)(void*,void*));
+
+/** Recursively free a tree 
+ * @param[_root] Root of the tree to be freed
+ * @param[_freecallback] Function pointer to perform a bstnode free
+ * */ 
+void free_bstnode_rec(bstnode_t *_root, void (*_freecallback)(void*));
+
+/** Removes a bst node 
+ * @brief Removes a bst node and then perform a 
+ * proper linking between sucessor nodes.
+ * Note that the node memory still allocated after removal.
+ * @param[_node] Node to be deleted
+ * @return Pointer to removed node or NULL if any error occur
+ * */
+bstnode_t *remove_bstnode(bstnode_t **_node);
+
+/** Found and removes a bst node by its data
+ * @param[_root] BST root
+ * @param[_data] Data pointer of the node to be find
+ * @param[_cmpcallback] Function pointer to compare two user-defined data types
+ * @return Pointer to removed node or NULL if any error occur
+ * */
+bstnode_t *remove_bstnode_bydata(bstnode_t *_root, void *_data, int (*_cmpcallback)(void*,void*));
+
 
 
 #endif

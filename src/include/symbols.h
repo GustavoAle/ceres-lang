@@ -24,6 +24,7 @@
 #ifndef __CERES_SYMBOLS_H
 #define __CERES_SYMBOLS_H
 
+#include <include/bst.h>
 #include <include/hash.h>
 #include <include/tokens.h>
 
@@ -73,7 +74,7 @@ struct symbol_t
  */
 symbol_t *allocate_symbol();
 
-/** Recussively free a symbol and it's childs
+/** Free a symbol 
  *  @param[_ptr] Pointer to symbol to be freed
  */
 void free_symbol(symbol_t *_ptr);

@@ -73,7 +73,6 @@ nfa256hash new_nfa256_hash(char *_string)
 
 int compare_nfa256_hash(nfa256hash *_hasha, nfa256hash *_hashb)
 {
-    int _bool = 1;
     int aux;
 
     for(aux = 0; aux < 32; aux++)
@@ -88,7 +87,10 @@ int compare_nfa256_hash(nfa256hash *_hasha, nfa256hash *_hashb)
     /** Congratulations in 1 chance out of 2^256 your hashs are equal*/
     return 0;
 
-/*  //Lemme comment my mistakes before taking the trash out
+    /*
+    //Lemme comment my mistakes before taking the trash out
+    int _bool = 1;
+    
     if(!(_bool = _bool && (_hasha.block_a == _hashb.block_a))){ return 0; };
     if(!(_bool = _bool && (_hasha.block_b == _hashb.block_b))){ return 0; };
     if(!(_bool = _bool && (_hasha.block_c == _hashb.block_c))){ return 0; };
@@ -99,6 +101,6 @@ int compare_nfa256_hash(nfa256hash *_hasha, nfa256hash *_hashb)
     if(!(_bool = _bool && (_hasha.block_h == _hashb.block_h))){ return 0; };
 
     return _bool;   
-*/
+    */
 }
 
