@@ -24,10 +24,74 @@
 #include <stdlib.h>
 
 #include <include/bst.h>
+#include <include/error.h>
+
+bstnode_t *allocate_bstnode()
+{
+    bstnode_t *new;
+    
+    new = (bstnode_t*)malloc(sizeof(bstnode_t));
+    
+    if(new == NULL)
+    {
+        simple_error_wrapper("Allocation error, this is not supposed to happen\n");
+        /*fprintf(STDERR_FILE,"Allocation error, this is not supposed to happen\n");
+        fprintf(STDERR_FILE,"FILE: %s \tLINE: %d",__FILE__,__LINE__);
+        exit(0);*/
+    }
+    new->right = NULL;
+    new->left = NULL;
+    new->subtree = NULL;
+    new->data = NULL;
+
+    return new;
+}
 
 bstnode_t *insert_bstnode(bstnode_t *_root, void *_data, int (*_cmpcallback)(void*,void*))
 {
+    int res;
+    bstnode_t *aux;
+    bstnode_t *new;
 
+    new = allocate_bstnode();
+
+    new->data = _data;
+
+    aux = _root;
+    while(aux != NULL)
+    {
+        if(res = _cmpcallback(_data,aux->data))
+        {
+            if(res < 0)
+            { 
+                if(aux->left != NULL){
+                    /* Inner ode, still searching*/
+                    aux = aux->left;
+                }else{
+                    /* Leaf node, point to node and exit loop*/
+                    aux->left = new;
+                    break;
+                }
+
+            }else{ 
+
+                if(aux->right != NULL){
+                    /* Inner node, still searching*/
+                    aux = aux->right;
+                }else{
+                    /* Leaf node, point to node and exit loop*/
+                    aux->right = new;
+                    break;
+                }    
+            }
+        }else{
+            /* This is not supposed to happen */
+            simple_error_wrapper("\nBST Node already exist");
+            break;
+        }
+    }
+
+    return new;
 }
 
 bstnode_t *find_bstnode(bstnode_t *_root, void *_data, int (*_cmpcallback)(void*,void*))
@@ -88,7 +152,10 @@ bstnode_t *remove_bstnode(bstnode_t **_node)
                 sucessor = sucessor->left;
             }
 
-            parent->left = sucessor->right;
+            if(parent != bkp){
+                parent->left = sucessor->right;
+            }
+            
             sucessor->right = bkp->right;
             sucessor->left = bkp->left;
             *_node = sucessor;

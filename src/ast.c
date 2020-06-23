@@ -21,9 +21,12 @@
 
  ******************************************************************************/
 
-#include <include/ast.h>
+
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <include/ast.h>
+#include <include/error.h>
 
 /** Temporary*/
 #define STDERR_FILE stdout
@@ -36,9 +39,10 @@ astnode_t *allocate_node()
     
     if(new == NULL)
     {
-        fprintf(STDERR_FILE,"Allocation error, this is not supposed to happen\n");
+        simple_error_wrapper("Allocation error, this is not supposed to happen\n");
+        /*fprintf(STDERR_FILE,"Allocation error, this is not supposed to happen\n");
         fprintf(STDERR_FILE,"FILE: %s \tLINE: %d",__FILE__,__LINE__);
-        exit(0);
+        exit(0);*/
     }
 
     return new;

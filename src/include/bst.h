@@ -55,6 +55,11 @@ struct bstnode_t
     anydata_t *data;
 };
 
+/** Allocate a BST node and return it's pointer
+ *  @return Pointer to the allocated node
+ */
+astnode_t *allocate_node();
+
 /** Inserts a BST node 
  * @param[_root] BST root 
  * @param[_data] Data pointer of the node to be inserted
