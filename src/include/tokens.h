@@ -30,7 +30,7 @@ typedef enum
     BOOL, BYTE, CHAR, DOUBLE, FLOAT, 
     INT, LONG, SHARED, TUPLE, 
     /* Type modifiers */
-    AUTO, CONST, POINTER, PUBLIC, 
+    AUTO, CONST, LOCAL, POINTER, PROTECTED, PUBLIC, 
     REGISTER, STATIC, SIGNED, UNSIGNED,
     /* Statements */
     ASM, BREAK, CLASS, ELSE, FOR, IF, FUNCTION, 

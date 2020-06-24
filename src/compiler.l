@@ -54,10 +54,12 @@ bin     [0-1]
 "function"  { return FUNCTION; }
 "if"        { return IF; }
 "int"       { return INT; }
+"local"     { return LOCAL; }
 "long"      { return LONG; }
 "loop"      { return LOOP; }
 "mem"       { return POINTER; }
 "pointer"   { return POINTER; }
+"protected" { return PROTECTED; }
 "public"    { return PUBLIC; }
 "reg"       { return REGISTER; }
 "register"  { return REGISTER; }

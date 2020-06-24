@@ -39,26 +39,29 @@
 typedef struct bstnode_t bstnode_t;
 
 /** Generic data storage */
+/*
+// Whatever, void pointers are a better way
 typedef union anydata_t anydata_t;
-
 union anydata_t
 {
     symbol_t *symbol;
     void *any;
 };
+*/
 
 struct bstnode_t
 {
     bstnode_t *left;
     bstnode_t *right; 
     bstnode_t *subtree; /** Inner scope */
-    anydata_t *data;
+    //anydata_t *data;
+    void *data;
 };
 
 /** Allocate a BST node and return it's pointer
  *  @return Pointer to the allocated node
  */
-astnode_t *allocate_node();
+bstnode_t *allocate_node();
 
 /** Inserts a BST node 
  * @param[_root] BST root 

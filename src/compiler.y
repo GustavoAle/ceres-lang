@@ -40,35 +40,12 @@
 %type <ast_node> expr stat stat_list
 
  /*
-%token ASM
-%token AUTO
-%token BOOL
-%token BREAK
-%token BYTE
-%token CONST
-%token DOUBLE
-%token ELSE
-%token FLOAT
-%token FOR
-%token FUNCTION
-%token IF
-%token INT
-%token LONG
-%token LOOP
-%token POINTER
-%token PUBLIC
-%token REGISTER
-%token RETURN
-%token SCOPE
-%token SHARED
-%token SIGNED
+%token AUTO BOOL BYTE DOUBLE FLOAT INT LONG
+%token CONST UNSIGNED SIGNED PUBLIC STATIC REGISTER POINTER
+%token ELSE IF FOR BREAK LOOP WHILE
+%token ASM FUNCTION RETURN SCOPE SUB
+%token SHARED TUPLE TYPE
 %token SIZEOF
-%token STATIC
-%token SUB
-%token TUPLE
-%token TYPE
-%token UNSIGNED
-%token WHILE
  */
 
 %%
