@@ -27,6 +27,22 @@ development and testing of the S3MC processors. This goal will be gradually
 extended to provide a high-level language for new RISC based processors since LLVM
 and other compiler toolchains are relatively hard to work with.
 
+## Development
+### Basic things
+- [ ] Lexer based on Lex/Flex
+- [ ] Parser based on Yacc/Bison
+- [x] AST
+- [x] Generic BST
+- [ ] Symbols table
+- [ ] Intermediate code generation
+- [ ] Error handling
+- [ ] Code generation for RISC-V targets
+
+### Advanced things
+- [ ] Semi-oop implementation
+- [ ] Custom Lexer and Parser
+- [ ] Code generation for user-defined targets 
+
 ## Documentation
 ### Usage, syntax and language related info.
 Please refer to [Ceres Documentation](https://gustavoale.github.io/ceres-lang-doc/site/)
