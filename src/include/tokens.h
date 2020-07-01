@@ -26,6 +26,7 @@
 
 typedef enum 
 {
+    NONE,
     /* Types*/
     BOOL, BYTE, CHAR, DOUBLE, FLOAT, 
     INT, LONG, SHARED, TUPLE, 

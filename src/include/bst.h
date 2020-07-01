@@ -27,9 +27,10 @@
 /******************************************************************************
  * Add here the headers for user-defined data types, 
  * then add the data def to anydata_t union
+ * Edit: I changed my mind, void pointers are the way
 ******************************************************************************/
 
-#include <include/symbols.h>
+//#include <include/symbols.h>
 
 /*****************************************************************************/
 
