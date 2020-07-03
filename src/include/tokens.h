@@ -29,7 +29,7 @@ typedef enum
     NONE,
     /* Types*/
     BOOL, BYTE, CHAR, DOUBLE, FLOAT, 
-    INT, LONG, SHARED, TUPLE, 
+    INT, LONG, SHARED, STRING, TUPLE, 
     /* Type modifiers */
     AUTO, CONST, LOCAL, POINTER, PROTECTED, PUBLIC, 
     REGISTER, STATIC, SIGNED, UNSIGNED,

@@ -24,6 +24,8 @@
 #ifndef __CERES_COMPILER_H
 #define __CERES_COMPILER_H
 
+#include <stdio.h>
+
 /** yylex function
  * @brief Get current char, count current line 
  * and column then return the current char 
@@ -35,5 +37,7 @@ int yylex();
  * @brief Print a error message when a parsing error occurs
  * */
 void yyerror();
+
+void parse_comment_block();
 
 #endif

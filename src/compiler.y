@@ -28,15 +28,24 @@
 %}
 
 %union {
-    int const_value;
+    int int_value;
+    long long_value;
+    float float_value;
+    double double_value;
     char *string_value;
+    void *pointer_value;
     char *symbol_name;
     astnode_t *ast_node;
 }
 
-%token <const_value> CONSTANT
+%token <int_value> INT_CONSTANT
+%token <long_value> LONG_CONSTANT
+%token <float_value> FLOAT_CONSTANT
+%token <double_value> DOUBLE_CONSTANT
+%token <ptr_value> PTR_CONSTANT
+
 %token <symbol_name> IDENTIFIER
-%token <string_value> STRING
+%token <string_value> STRING_LITERAL
 %type <ast_node> expr stat stat_list
 
  /*

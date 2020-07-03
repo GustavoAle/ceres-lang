@@ -61,7 +61,7 @@ void free_node(astnode_t *_ptr)
         case IDENTIFIER_TYPE:
             /** Note that this line frees the memory allocated to hold
             the identifier name thus when assigning a value to name make
-            a copy o the string instead of pointing to it with strdup*/
+            a copy of the string with strdup instead of pointing to it*/
             free(_ptr->identifier.name);
             break;
         default:
@@ -85,14 +85,39 @@ astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t
     return new;
 }
 
-astnode_t *new_constant_node(int _value)
+astnode_t *new_constant_node(void *_ptr, __ceres_token _type)
 {
     astnode_t *new = allocate_node();
-
     new->type = CONSTANT_TYPE;
 
+    if(_ptr == NULL){
+        simple_error_wrapper("Passed void pointer is NULL");
+    }
+
     /** Initialize the node with passed arguments*/
-    new->constant.value = _value;
+    switch(_type)
+    {
+        case INT:
+            new->constant.int_value = *(int*)_ptr;
+            break;
+        case LONG:
+            new->constant.long_value = *(long*)_ptr;
+            break;
+        case FLOAT:
+            new->constant.float_value = *(float*)_ptr;
+            break;
+        case DOUBLE:
+            new->constant.double_value = *(double*)_ptr;
+            break;
+        case POINTER:
+            new->constant.pointer_value = _ptr;
+            break;
+        case STRING:
+            new->constant.string_value = (char*)_ptr;
+            break;
+        default:
+            new->constant.int_value = 0;
+    }
 
     return new;
 }
