@@ -131,7 +131,7 @@ struct astnode_t
 /** Allocate a node and return it's pointer
  *  @return Pointer to the allocated node
  */
-astnode_t *allocate_node();
+astnode_t *allocate_astnode();
 
 /** Recursively free a node
  *  @param[_ptr] Pointer to node to be freed

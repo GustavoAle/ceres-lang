@@ -31,7 +31,7 @@
 /** Temporary*/
 #define STDERR_FILE stdout
 
-astnode_t *allocate_node()
+astnode_t *allocate_astnode()
 {
     astnode_t *new;
     
@@ -48,15 +48,15 @@ astnode_t *allocate_node()
     return new;
 }
 
-void free_node(astnode_t *_ptr)
+void free_astnode(astnode_t *_ptr)
 {
     if(_ptr == NULL){ return; }
 
     switch(_ptr->type)
     {
         case OPERATOR_TYPE:
-            free_node(_ptr->operator.left);
-            free_node(_ptr->operator.right);
+            free_astnode(_ptr->operator.left);
+            free_astnode(_ptr->operator.right);
             break;
         case IDENTIFIER_TYPE:
             /** Note that this line frees the memory allocated to hold
@@ -73,7 +73,7 @@ void free_node(astnode_t *_ptr)
 
 astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t *_right)
 {
-    astnode_t *new = allocate_node();
+    astnode_t *new = allocate_astnode();
 
     new->type = OPERATOR_TYPE;
 
@@ -87,7 +87,7 @@ astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t
 
 astnode_t *new_constant_node(void *_ptr, __ceres_token _type)
 {
-    astnode_t *new = allocate_node();
+    astnode_t *new = allocate_astnode();
     new->type = CONSTANT_TYPE;
 
     if(_ptr == NULL){
@@ -124,7 +124,7 @@ astnode_t *new_constant_node(void *_ptr, __ceres_token _type)
 
 astnode_t *new_identifier_node(char *_name)
 {
-    astnode_t *new = allocate_node();
+    astnode_t *new = allocate_astnode();
 
     new->type = IDENTIFIER_TYPE;
 
