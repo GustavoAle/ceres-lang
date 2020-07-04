@@ -31,12 +31,13 @@
  * and column then return the current char 
  * @return Current char from file SOURCE_INPUT 
 */
-int yylex();
+//int yylex();
 
 /** yyerror function 
  * @brief Print a error message when a parsing error occurs
+ * @param[_msg] Error message string
  * */
-void yyerror();
+void yyerror(const char *_msg);
 
 void parse_comment_block();
 
