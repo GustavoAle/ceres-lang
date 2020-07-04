@@ -24,6 +24,8 @@
 #ifndef __CERES_AST_H
 #define __CERES_AST_H
 
+#include <include/tokens.h>
+
 /** Define available token types
  *  CONSTANT - integers, floats, strings statically allocated
  *  IDENTIFIER - variable and function names
@@ -46,20 +48,22 @@ typedef enum
 typedef enum
 {
     /** Arithmetic */
-    ADD_OP, SUB_OP, MUL_OP, DIV_OP, MOD_OP,
+    ADD_OP, SUB_OP, MUL_OP, DIV_OP, MOD_OP, INC_OP, DEC_OP,
     /** Bitwise */
     AND_OP, OR_OP, XOR_OP, NOT_OP, RSH_OP, LSH_OP,
     /** Logical */
     LAND_OP, LOR_OP, LNOT_OP,
+    /** Relational operators*/
+    EQ_OP, NE_OP, GT_OP, GE_OP, LT_OP, LE_OP, 
     /** Statements */
     IF_STAT, ELSE_STAT, FOR_STAT, WHILE_STAT, RETURN_STAT,
     /** Other operators*/
     LOOP_OP, BREAK_OP,
     ASSIGN_OP, CALL_OP, LIST_OP,
     /** Arithmetic assign operators*/
-    AADD_OP, ASUB_OP, AMUL_OP, ADIV_OP,
+    AADD_OP, ASUB_OP, AMUL_OP, ADIV_OP, AMOD_OP,
     /** Bitwise assign operators*/
-    AAND_OP, AOR_OP, AXOR_OP, ANOT_OP, ARSH_OP, ALSH_OP
+    AAND_OP, AOR_OP, AXOR_OP, ARSH_OP, ALSH_OP
 } __ceres_opcode;
 
 /** Basic AST node structure
@@ -67,10 +71,11 @@ typedef enum
  */
 typedef struct astnode_t astnode_t;
 
-/** Constant node structure
+/** Constant node union
  *  Pre-definition for cross reference
  */
-typedef struct const_astnode_t const_astnode_t;
+typedef union const_astnode_t const_astnode_t;
+//typedef struct const_astnode_t const_astnode_t;
 
 /** Identifier node structure
  *  Pre-definition for cross reference
@@ -82,10 +87,23 @@ typedef struct id_astnode_t id_astnode_t;
  */
 typedef struct op_astnode_t op_astnode_t;
 
+/** Changed to union 02/07/2020
 struct const_astnode_t
 {
     int value;
 };
+*/
+
+union const_astnode_t 
+{
+    int     int_value;
+    long    long_value;
+    float   float_value;
+    double  double_value;
+    void    *pointer_value;
+    char    *string_value;
+};
+
 
 struct id_astnode_t
 {
@@ -113,7 +131,7 @@ struct astnode_t
 /** Allocate a node and return it's pointer
  *  @return Pointer to the allocated node
  */
-astnode_t *allocate_node();
+astnode_t *allocate_astnode();
 
 /** Recursively free a node
  *  @param[_ptr] Pointer to node to be freed
@@ -129,10 +147,11 @@ void free_node(astnode_t *_ptr);
 astnode_t *new_operator_node(__ceres_opcode _opcode, astnode_t *_left, astnode_t *_right);
 
 /** Create a constant node
- *  @param[_value] Constant's value
+ *  @param[_value] Constant's value pointer
+ *  @param[_type] Constant type
  *  @return Pointer to the created constant node
  */
-astnode_t *new_constant_node(int _value);
+astnode_t *new_constant_node(void *_ptr, __ceres_token _type);
 
 /** Create a identifier node
  *  @param[_name] identifier name

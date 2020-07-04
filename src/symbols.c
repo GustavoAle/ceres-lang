@@ -21,4 +21,74 @@
 
 ******************************************************************************/
 
+#include <stdlib.h>
+
 #include <include/symbols.h>
+#include <include/tokens.h>
+
+symbol_t *allocate_symbol()
+{
+    symbol_t *new;
+
+    new = (symbol_t*)malloc(sizeof(symbol_t));
+
+    if(new == NULL){
+        simple_error_wrapper("Allocation error, this is not supposed to happen\n");
+    }
+
+    return new;
+}
+
+void free_symbol(symbol_t *_ptr)
+{
+    if(_ptr != NULL) free(_ptr);
+}
+
+symbol_t *find_symbol(bstnode_t *_root, nfa256hash *_hash)
+{
+    symbol_t *_ptr;
+
+    _ptr = find_bstnode(_root, _hash, compare_symbol_hash);
+
+    return _ptr;
+}
+
+symbol_t *insert_symbol(bstnode_t *_root, nfa256hash *_hash)
+{
+    symbol_t *new;
+    new = allocate_symbol();
+
+    new->hash = _hash;
+    new->type = NONE;
+
+    insert_bstnode(_root, new, compare_symbol_hash);
+
+    return new;
+}
+
+int compare_symbol(symbol_t *_symbola, symbol_t *_symbolb)
+{
+    if(_symbola == NULL || _symbolb == NULL)
+    {
+        simple_error_wrapper("One of passed symbols are NULL\n");
+    }
+    return compare_nfa256_hash(_symbola->hash, _symbolb->hash);
+}
+
+int compare_symbol_hash(nfa256hash *_hash, symbol_t *_symbol)
+{
+    if(_hash == NULL || _symbol == NULL )
+    {
+        simple_error_wrapper("One of passed args are NULL\n");
+    }
+    return compare_nfa256_hash(_hash, _symbol->hash);
+}
+
+//Quite useless
+int typeof_symbol(symbol_t *_ptr)
+{
+    if(_ptr == NULL){
+        return -1;    
+    }
+    return _ptr->type;
+}

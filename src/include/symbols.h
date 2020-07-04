@@ -24,45 +24,16 @@
 #ifndef __CERES_SYMBOLS_H
 #define __CERES_SYMBOLS_H
 
+#include <include/bst.h>
 #include <include/hash.h>
 #include <include/tokens.h>
-
-/*
-typedef enum
-{
-    AUTO,
-    BOOL,
-    BYTE,
-    CHAR,
-    CLASS,
-    DOUBLE,
-    FLOAT,
-    INT,
-    LONG,
-    SHARED,
-    TUPLE,
-    VOID
-} __symbol_type;
-
-typedef enum 
-{
-    CONST,
-    FUNCTION,
-    POINTER,
-    REGISTER,
-    SIGNED,
-    STATIC,
-    SUB,
-    UNSIGNED
-} __atrr_type;
-*/
 
 /** Struct that hold a symbol entry*/
 typedef struct symbol_t symbol_t;
 
 struct symbol_t 
 {
-    nfa256hash hash;
+    nfa256hash *hash;
     __ceres_token type;
     __ceres_token attr;
     int offset;
@@ -73,16 +44,47 @@ struct symbol_t
  */
 symbol_t *allocate_symbol();
 
-/** Recussively free a symbol and it's childs
+/** Free a symbol 
  *  @param[_ptr] Pointer to symbol to be freed
  */
 void free_symbol(symbol_t *_ptr);
 
 /** Find symbol based on it's hash
  * @param[_hash] Symbol hash
- * @return Pointer to symbol
+ * @return Pointer to symbol or NULL if not found
  */
-symbol_t *find_symbol(nfa256hash _hash);
+symbol_t *find_symbol(bstnode_t *_root, nfa256hash *_hash);
 
+/** Insert symbol on symbols tree
+ * @param[_hash] Hash pointer
+ * @return Pointer to the inserted symbol
+ */
+symbol_t *insert_symbol(bstnode_t *_root,nfa256hash *_hash);
+
+/** Symbols tree analogue to strcmp 
+ * Compare two symbols and return if they are equal, less than or greater than
+ * @param[_symbola] First symbol
+ * @param[_symbolb] Second symbol
+ * @return  <0 if _symbola < _symbolb
+ *           0 if _symbola == _symbolb
+ *          >0 if _symbola > _symbolb 
+ * */ 
+int compare_symbol(symbol_t *_symbola, symbol_t *_symbolb);
+
+/** Compare symbol hash with the given has and return if 
+ * they are equal, less than or greater than
+ * @param[_hash] Hash to compare
+ * @param[_symbol] Symbol pointer
+ * @return  <0 if _hash < _symbol->hash
+ *           0 if _hash == _symbol->hash
+ *          >0 if _hash > _symbol->hash
+ * */ 
+int compare_symbol_hash(nfa256hash *_hash, symbol_t *_symbol);
+
+/** Get the symbol type 
+ * @param[_ptr] Symbol pointer
+ * @return Symbol type integer enum. See __ceres_token (include/tokens.h)
+*/
+int typeof_symbol(symbol_t *_ptr);
 
 #endif

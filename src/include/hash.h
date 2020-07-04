@@ -46,6 +46,15 @@ union nfa256hash_u {
  * @return NFA-256 hash
  * */ 
 nfa256hash new_nfa256_hash(char *_string);
-int compare_nfa256_hash(nfa256hash _hasha, nfa256hash _hashb);
+
+/** NFA-256 analogue to strcmp 
+ * Compare two nfa-256 hash and return if they are equal, less than or greater than
+ * @param[_hasha] First hash
+ * @param[_hashb] Second hash
+ * @return  <0 if _hasha < _hashb
+ *           0 if _hasha == _hashb
+ *          >0 if _hasha > _hashb 
+ * */ 
+int compare_nfa256_hash(nfa256hash *_hasha, nfa256hash *_hashb);
 
 #endif

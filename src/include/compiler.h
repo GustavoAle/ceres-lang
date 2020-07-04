@@ -24,16 +24,21 @@
 #ifndef __CERES_COMPILER_H
 #define __CERES_COMPILER_H
 
+#include <stdio.h>
+
 /** yylex function
  * @brief Get current char, count current line 
  * and column then return the current char 
  * @return Current char from file SOURCE_INPUT 
 */
-int yylex();
+//int yylex();
 
 /** yyerror function 
  * @brief Print a error message when a parsing error occurs
+ * @param[_msg] Error message string
  * */
-void yyerror();
+void yyerror(const char *_msg);
+
+void parse_comment_block();
 
 #endif
