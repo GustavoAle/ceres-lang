@@ -22,10 +22,6 @@
 
 **Ceres is not done yet, please refer to [Homemade Bread](https://github.com/GustavoAle/ceres-lang/tree/homemade-bread) as the development branch**
 
-<p align="center">
-<img src="assets/homemade-bread.gif">
-</p>
-
 ## Brief
 Ceres is a semi-oop simple programming language targeting new RISC based
 processors and custom architectures.  
